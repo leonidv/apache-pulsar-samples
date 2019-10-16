@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="SbtLocalSettings">
+    <option name="modificationStamps">
+      <map>
+        <entry key="$PROJECT_DIR$/../../../livetex/Communication-Debugger" value="1456519949754" />
+        <entry key="$PROJECT_DIR$/../../../livetex/Employee-Api-Service" value="1456949714434" />
+        <entry key="$PROJECT_DIR$/../../../ЛЭТИ-sync/Архитектура ИС/virtualx-assistent" value="1465253935580" />
+        <entry key="$PROJECT_DIR$/../../../Программирование/Scala/akka-shultz" value="1449176061153" />
+        <entry key="$PROJECT_DIR$/../../../Программирование/Scala/shultz-play" value="1449414647218" />
+        <entry key="$PROJECT_DIR$/../../../Программирование/Scala/silhouette-pg" value="1448661714141" />
+        <entry key="$PROJECT_DIR$/../../../Программирование/Scala/silhouette-vk" value="1448663947186" />
+        <entry key="$PROJECT_DIR$/../../../Программирование/poems/poem-fetcher" value="1465242344539" />
+      </map>
+    </option>
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="ScalaSbtSettings">
+    <option name="vmParameters" value="" />
+  </component>
+  <component name="ThriftCompiler">
+    <compilers />
+  </component>
+</project>
