@@ -1,3 +1,5 @@
+package com.vygovskiy.pulsar.examples
+
 import org.apache.pulsar.client.api.*
 import java.util.*
 

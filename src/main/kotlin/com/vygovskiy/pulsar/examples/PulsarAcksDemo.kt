@@ -1,3 +1,5 @@
+package com.vygovskiy.pulsar.examples
+
 import org.apache.pulsar.client.api.*
 import java.util.concurrent.TimeUnit
 import kotlin.system.exitProcess
@@ -5,26 +7,32 @@ import kotlin.system.exitProcess
 val ACK_TIMEOUT = 1000L;
 
 fun main() {
+
+
     PulsarClient.builder()
         .serviceUrl("pulsar://localhost:6650")
         .build()
         .use { client: PulsarClient ->
             client
                 .newProducer(Schema.INT32)
-                .topic("simple-demo")
+                .topic("acks-demo")
                 .create()
                 .use { producer: Producer<Int> ->
                     (1..10).forEach { i ->
-                        print("send msg [$i]...  ")
+                        print("publis msg [$i]...  ")
                         val msgId = producer.send(i)
                         println("ok, messageId = $msgId")
                     }
 
                 }
 
-            println("For now all messages are sent. Let's process them!")
+            println("\nFor now all messages are sent. Let's process them!")
+            for (value in Action.values()) {
+                println("${value.name}, ${value.comment}")
+            }
+
             client.newConsumer(Schema.INT32)
-                .topic("simple-demo")
+                .topic("acks-demo")
                 .ackTimeout(ACK_TIMEOUT, TimeUnit.MILLISECONDS)
                 .subscriptionName("simple-subscription")
                 .subscribe()
@@ -59,14 +67,26 @@ fun main() {
 }
 
 enum class Action(val cmd: String, val comment: String) {
-    ACK("a", "Send standard acknowledge, that means 'I processed message, don't send me it again'"),
+    ACK(
+        "a",
+        "Send standard acknowledge, that means 'I processed message, don't send me it again'"
+    ),
     NEGATIVE_ACK(
         "n",
         "Send negative asknowledge, that means 'I can't process message right now, give me another attempt'"
     ),
-    TIMEOUT("t", "Don't send any acks for this message"),
-    FAIL("f", "Terminate application (emulate kill -9)"),
-    EXIT("e", "Exit from application")
+    TIMEOUT(
+        "t",
+        "Don't send any acks for this message"
+    ),
+    FAIL(
+        "f",
+        "Terminate application (emulate kill -9)"
+    ),
+    EXIT(
+        "e",
+        "Exit from application"
+    )
 }
 
 fun readAction(): Action {
